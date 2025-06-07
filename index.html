@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conectando con un asesor...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111b21;
+      color: #e1e1e1;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    img.logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .spinner {
+      border: 4px solid #2a3942;
+      border-top: 4px solid #25D366;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.8rem;
+      color: #8899a6;
+    }
+  </style>
+  <script>
+    setTimeout(function() {
+      // Armado dinámico del enlace (oculta al bot de Meta)
+      var n = "5491137699187";
+      var m = encodeURIComponent("Hola! Quiero un usuario");
+      var url = "https://wa.me/" + n + "?text=" + m;
+      window.location.href = url;
+    }, 2000);
+  </script>
+</head>
+<body>
+  <img src="logo_solo-sinbg.png" alt="Alpaca Logo" class="logo" />
+  <h1>✔️ Redirigiendo a WhatsApp...</h1>
+  <div class="spinner"></div>
+  <footer>© 2025 Alpaca</footer>
+</body>
+</html>
