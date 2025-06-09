@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conectando con un asesor...</title>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src='https://connect.facebook.net/en_US/fbevents.js';
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script');
+    fbq('init', '1479773872992102');
+    fbq('track', 'PageView');
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -50,6 +65,25 @@
       100% { transform: rotate(360deg); }
     }
 
+    .btn-wsp {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #25D366;
+      color: #111b21;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-wsp:hover {
+      background-color: #1ebd5b;
+    }
+
     footer {
       position: absolute;
       bottom: 20px;
@@ -57,20 +91,41 @@
       color: #8899a6;
     }
   </style>
-  <script>
-    setTimeout(function() {
-      // Armado dinámico del enlace (oculta al bot de Meta)
-      var n = "5491137699194";
-      var m = encodeURIComponent("Hola! Quiero un usuario");
-      var url = "https://wa.me/" + n + "?text=" + m;
-      window.location.href = url;
-    }, 2000);
-  </script>
 </head>
 <body>
   <img src="logo_solo-sinbg.png" alt="Alpaca Logo" class="logo" />
   <h1>✔️ Redirigiendo a WhatsApp...</h1>
   <div class="spinner"></div>
+
+  <p id="mensaje-listo" style="display:none; margin-top: 20px; font-size: 1.1rem; color: #25D366;">
+    ¡Listo! Ya podés solicitar tu usuario en Alpaca
+  </p>
+
+  <a 
+    href="https://wa.me/5491137699194?text=Hola%21%20Quiero%20un%20usuario" 
+    class="btn-wsp" 
+    id="btnWsp"
+    onclick="trackWhatsAppClick()"
+  >
+    Ir a WhatsApp
+  </a>
+
   <footer>© 2025 Alpaca</footer>
+
+  <script>
+    // Ocultar spinner y mostrar mensaje a los 2 segundos
+    setTimeout(() => {
+      const spinner = document.querySelector('.spinner');
+      const mensaje = document.getElementById('mensaje-listo');
+      if (spinner) spinner.style.display = 'none';
+      if (mensaje) mensaje.style.display = 'block';
+    }, 2000);
+
+    // Evento personalizado de Meta Pixel
+    function trackWhatsAppClick() {
+      fbq('trackCustom', 'ClickWhatsApp');
+    }
+  </script>
 </body>
 </html>
+
